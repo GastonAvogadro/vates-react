@@ -1,25 +1,19 @@
+import { useState } from "react";
+
 function Fetch() {
-    async function getData() {
-        try{
-            const response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto');
-            const data = await response.json()
-            console.log(data)
-        } catch(err) {
-            console.error(err);
-        } finally {
-            console.log('Esto se ejecuta en el final');
-        }
-    }
+    const [data, setData] = useState(null);
 
-    getData()
+    const getFetch = () => {
+        fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+            .catch((err) => console.error(err))
+            .finally(() => console.log('Termino el fetch'));
+    };
 
-    fetch('https://pokeapi.co/api/v2/pokemon/ditto')
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.error(err))
-        .finally(console.log('Termino el fetch'))
-
-    return <div>Fetch</div>;
+    return <div>
+        <button onClick={getFetch}>Llamar a la base de datos</button>
+    </div>;
 }
 
 export default Fetch;
