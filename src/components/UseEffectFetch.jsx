@@ -24,7 +24,7 @@ function UseEffectFetch() {
                 {drinks.length > 0 ? (
                     drinks.map((drink) => {
                         return (
-                            <li key={drink.idDrink}>
+                            <li on key={drink.idDrink}>
                                 <img src={drink.strDrinkThumb} className='w-[200px]' alt="" />
                                 <p>{drink.strDrink}</p>
                             </li>
