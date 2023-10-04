@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
+import Counter from './components/Counter';
 import './App.css';
-import UseEffectFetch from './components/UseEffectFetch';
-import Events from './components/Events';
+import FormEvents from './components/FormEvents';
 
 function App() {
     
     return (
-        <div className="bg-red-200 h-[500px] flex justify-center items-center gap-4 flex-col mt-10">
-           <Events />
+        <div className="h-[500px] flex justify-center items-center gap-4 flex-col mt-10">
+           {/* <Counter /> */}
+
+           <FormEvents />
+           
         </div>
     );
 }
