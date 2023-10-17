@@ -4,6 +4,7 @@ import DrinkDetailCard from '../components/DrinkDetailCard';
 
 function Detail() {
     const [drink, setDrink] = useState([]);
+    const [favorites, setFavorites] = useState([])
     const { idDetail } = useParams();
 
     useEffect(() => {
@@ -11,6 +12,12 @@ function Detail() {
             .then((res) => res.json())
             .then((data) => setDrink(data.drinks));
     }, []);
+
+    useEffect(()=>{
+        const storedFavorites = JSON.parse(localStorage.getItem('favorites'))
+        storedFavorites && setFavorites(storedFavorites)
+    }, [])
+
 
     return <div>{drink.length > 0 ? <DrinkDetailCard drink={drink[0]} /> : <p>Loading...</p>}</div>;
 }

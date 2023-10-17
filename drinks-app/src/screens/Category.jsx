@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 
 function Category() {
     const [drinks, setDrinks] = useState([]);
+    const [favorites, setFavorites] = useState([])
     const { idCategory } = useParams();
 
     useEffect(() => {
@@ -11,6 +12,11 @@ function Category() {
             .then((res) => res.json())
             .then((data) => setDrinks(data.drinks));
     }, [idCategory]);
+
+    useEffect(()=>{
+        const storedFavorites = JSON.parse(localStorage.getItem('favorites'))
+        storedFavorites && setFavorites(storedFavorites)
+    }, [])
 
     return (
         <section>
